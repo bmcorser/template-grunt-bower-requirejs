@@ -4,17 +4,17 @@ var path = require('path');
 module.exports = function(grunt) {
   grunt.initConfig({
     jshint: {
-      all: ['./js/*.js'],
+      all: ['./app/js/*.js'],
       options: {
         force: true,
         reporter: require('jshint-stylish'),
-        ignores: ['./js/require.js']
+        ignores: ['./app/js/require.js']
       }
     },
     requirejs: {
       compile: {
         options: {
-          baseUrl: './js',
+          baseUrl: './app/js',
           dir: path.join(BUILD_DIR, 'js'),
           optimize: 'none'
         }
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
     },
     watch: {
       main: {
-        files: ['./markup/**/*', './js/**/*'],
+        files: ['./app/templates/**/*', './app/js/**/*'],
         tasks: ["build"],
         options: {
           reload: true,
@@ -32,20 +32,26 @@ module.exports = function(grunt) {
     },
     bower: {
       all: {
-        rjsConfig: 'js/config.js',
+        rjsConfig: 'app/js/config.js',
         options: {
-          baseUrl: './'
+          baseUrl: './js'
         }
       },
     },
     copy: {
-      bower: {
+      bower_components: {
         expand: true,
         src: [
           './bower_components/**/*.js',
           './bower_components/**/*.map'
         ],
-        dest: BUILD_DIR,
+        dest: path.join(BUILD_DIR, 'js'),
+      },
+      templates: {
+        expand: true,
+        flatten: true,
+        src: './app/templates/**/*',
+        dest: BUILD_DIR
       }
     }
   });
@@ -55,9 +61,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.registerTask('build', [
-    'copy',
     'bower',
     'jshint',
     'requirejs',
+    'copy',
   ]);
 };
