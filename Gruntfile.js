@@ -29,12 +29,34 @@ module.exports = function(grunt) {
           spawn: false
         }
       }
+    },
+    bower: {
+      all: {
+        rjsConfig: 'js/config.js',
+        options: {
+          baseUrl: './'
+        }
+      },
+    },
+    copy: {
+      bower: {
+        expand: true,
+        src: [
+          './bower_components/**/*.js',
+          './bower_components/**/*.map'
+        ],
+        dest: BUILD_DIR,
+      }
     }
   });
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-bower-requirejs');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.registerTask('build', [
+    'copy',
+    'bower',
     'jshint',
     'requirejs',
   ]);
