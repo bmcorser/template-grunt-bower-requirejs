@@ -1,6 +1,7 @@
 {
   "name": "grunt-bower-requirejs",
-  "version": "0.0.0a",
+  "version": "0.0.0b",
+  "repository": "https://github.com/bmcorser/grunt-bower-requirejs.git",
   "description": "How does I front end",
   "devDependencies": {
     "bower": "^1.3.12",
