@@ -22,7 +22,11 @@ module.exports = function(grunt) {
     },
     watch: {
       main: {
-        files: ['./app/templates/**/*', './app/js/**/*'],
+        files: [
+          './app/templates/**/*',
+          './app/js/**/*',
+          './app/css/**/*',
+        ],
         tasks: ["build"],
         options: {
           reload: true,
@@ -52,6 +56,12 @@ module.exports = function(grunt) {
         flatten: true,
         src: './app/templates/**/*',
         dest: BUILD_DIR
+      },
+      styles: {
+        expand: true,
+        flatten: true,
+        src: './app/css/**/*',
+        dest: path.join(BUILD_DIR, 'css'),
       }
     }
   });

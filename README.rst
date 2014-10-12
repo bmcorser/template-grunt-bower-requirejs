@@ -8,12 +8,12 @@ build and dependency resolution. You can install both from NPM::
     sudo npm install -g bower
 
 From the root (in the same directory as ``bower.json`` and ``package.json``)
-to download Grunt deps and project deps run::
+to download project deps and app deps run::
 
     npm install
     bower install
 
-In the same directory, the project can be built with::
+In the same directory, the app can be built with::
 
     grunt build
 
