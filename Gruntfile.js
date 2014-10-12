@@ -34,16 +34,16 @@ module.exports = function(grunt) {
       all: {
         rjsConfig: 'app/js/config.js',
         options: {
-          baseUrl: './js'
+          baseUrl: './'
         }
       },
     },
     copy: {
-      bower_components: {
+      lib: {
         expand: true,
         src: [
-          './bower_components/**/*.js',
-          './bower_components/**/*.map'
+          './lib/**/*.js',
+          './lib/**/*.map'
         ],
         dest: path.join(BUILD_DIR, 'js'),
       },

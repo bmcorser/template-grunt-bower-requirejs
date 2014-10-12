@@ -1,10 +1,11 @@
 requirejs.config({
+  baseUrl: "./js",
   shim: {
 
   },
   paths: {
-    underscore: "../bower_components/underscore/underscore",
-    jquery: "../bower_components/jquery/dist/jquery"
+    underscore: "lib/underscore/underscore",
+    jquery: "lib/jquery/dist/jquery"
   },
   packages: [
 
